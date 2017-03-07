@@ -52,6 +52,7 @@ public class Main {
         String host = "http://10.255.140.195:55555";
         String pairingUrl = host + "/devices/cat/pair";
         String authorizeSaleUrl = host + "/devices/cat/authorizeSales";
+        String  getScanDataUrl = host + "/devices/cat/getScanData";
         int timeout = 60000; // deault timeout 60 seconds
         String pairingCode = "ZHED2L";
 
@@ -126,6 +127,18 @@ public class Main {
                 System.out.println("Response: " + saleResponse);
             }
         }
+
+
+        /*
+         * Barcode scan example
+         */
+        poyntRequestId = UUID.randomUUID().toString();
+        // pairing request format
+        String getScanDataRequest = "{\"poyntRequestId\":\"" + poyntRequestId + "\"}";
+        signature = Util.generateHmacSHA256Signature(getScanDataRequest, pairingCode);
+
+        response = client.doPost(signature, getScanDataRequest, getScanDataUrl, timeout);
+        System.out.println(response);
 
     }
 }
