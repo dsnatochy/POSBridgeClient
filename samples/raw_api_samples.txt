@@ -1,0 +1,74 @@
+ **** PAIRING ******
+
+
+ => POST /devices/cat/pair HTTP/1.1
+ => Poynt-Client: Java Sample
+ => Poynt-Request-Id: bc8d62ab-b64c-42de-aacd-0a4bc2d3dbd9
+ => Signature: 7C3D79C878F0AFBFD7C2A7B3FA9FE08D8616C3FEB8B1C986E106C6CB2B7EF67B
+ => Content-Type: text/plain; charset=utf-8
+ => Content-Length: 57
+ => Host: 127.0.0.1:55555
+ => Connection: Keep-Alive
+ => Accept-Encoding: gzip
+ => User-Agent: okhttp/3.5.0
+ => 
+ => {"poyntRequestId":"dd9b171e-a9d9-4b58-8295-fb64b398263a"}
+
+<=  HTTP/1.1 200 OK
+<=  Connection: Keep-Alive
+<=  Signature: 0693CB96D83D81996C0CC36B76363AC3445A1E53FB14EC81C833A3A69A8D026F
+<=  Content-Length: 102
+<=  Content-Type: application/json
+<=  
+<=  {"status":"SUCCESS", "poyntRequestId":"dd9b171e-a9d9-4b58-8295-fb64b398263a","serialNumber":"unknown"}
+
+
+
+
+
+******* SALE *******
+
+ => POST /devices/cat/authorizeSales HTTP/1.1
+ => Poynt-Client: Java Sample
+ => Poynt-Request-Id: b45f603f-c222-4f4b-8fdc-a4ca849e55dd
+ => Signature: 56C775B3E2DEA0CCC65FCD0F852152BE6F4581F91D6B31C410862AE72989D186
+ => Content-Type: text/plain; charset=utf-8
+ => Content-Length: 389
+ => Host: 127.0.0.1:55555
+ => Connection: Keep-Alive
+ => Accept-Encoding: gzip
+ => User-Agent: okhttp/3.5.0
+ => 
+ => {"poyntRequestId":"14aa9011-8165-4f2b-a03a-b40ca4d4fc58","timeout":60000,"payment":{"amount":1000,"cashbackAmount":0,"tipAmount":0,"currency":"USD","referenceId":"ed360bb7-4851-4611-9c2f-d6b4114ad42c","multiTender":true,"authzOnly":false,"nonReferencedCredit":false,"disableDebitCards":false,"disableCash":false,"disableTip":false,"cashOnly":false,"debit":false,"skipReceiptScreen":false}}
+
+<=  HTTP/1.1 200 OK
+<=  Connection: Keep-Alive
+<=  Signature: E257F642223C06A1DAD09CE1D45C6852F637EAE2889C9E395E55893CAED75716
+<=  Content-Length: 2544
+<=  Content-Type: application/json
+<=  
+<=  {"catResponse":{"accountNumber":"411111******1111","approvalCode":"656679","cardCompanyID":"V","centerResultCode":"","transactionNumber":"87534ab3-2065-41b1-92d2-bd583362f3ad","sequenceNumber":90,"paymentCondition":0,"transactionType":10},"payment":{"transactions":[{"action":"SALE","adjusted":false,"amounts":{"cashbackAmount":0,"currency":"USD","customerOptedNoTip":false,"orderAmount":1000,"tipAmount":0,"transactionAmount":1000},"authOnly":false,"context":{"businessId":"469e957c-57a7-4d54-a72a-9e8f3296adad","businessType":"TEST_MERCHANT","employeeUserId":1526454,"mcc":"5812","source":"INSTORE","sourceApp":"co.poynt.manual","storeDeviceId":"urn:tid:dfc3e94b-1d27-3172-9e39-f3688d7e4b08","storeId":"c2855b41-1dd5-4ecc-8258-f0c89ae40338","transmissionAtLocal":"2017-03-08T07:02:13Z"},"createdAt":"2017-03-08T19:02:13Z","customerUserId":1526488,"fundingSource":{"card":{"expirationMonth":12,"expirationYear":2032,"id":18282,"numberFirst6":"411111","numberLast4":"1111","numberMasked":"411111******1111","status":"ACTIVE","type":"VISA"},"debit":false,"entryDetails":{"customerPresenceStatus":"MOTO","entryMode":"KEYED"},"type":"CREDIT_DEBIT"},"id":"1f0cb954-9dc9-40a7-9ff1-657bdcf2710a","partiallyApproved":false,"processorResponse":{"acquirer":"CHASE_PAYMENTECH","approvalCode":"656679","approvedAmount":1000,"batchId":"1","processor":"MOCK","retrievalRefNum":"1f0cb954-9dc9-40a7-9ff1-657bdcf2710a","status":"Successful","statusCode":"1","statusMessage":"Successful","transactionId":"1f0cb954-9dc9-40a7-9ff1-657bdcf2710a"},"signatureCaptured":false,"status":"CAPTURED","transactionNumber":"87534ab3-2065-41b1-92d2-bd583362f3ad","updatedAt":"2017-03-08T19:02:13Z","voided":false}],"status":"COMPLETED","currency":"USD","referenceId":"ed360bb7-4851-4611-9c2f-d6b4114ad42c","amount":1000,"tipAmount":0,"cashbackAmount":0,"disableEMVCT":false,"disableEbtCashBenefits":false,"disableEbtFoodStamps":false,"disableEbtVoucher":false,"disableMSR":false,"disableManual":false,"disableOther":false,"disablePaymentOptions":false,"disableTip":false,"disableDCC":false,"isBalanceInquiry":false,"manualEntry":false,"multiTender":true,"nonReferencedCredit":false,"disableCheck":false,"disableChangeAmount":false,"disableCash":false,"readCardDataOnly":false,"debitOnly":false,"debit":false,"skipReceiptScreen":false,"creditOnly":false,"disableEMVCL":false,"disableDebitCards":false,"cashOnly":false,"authzOnly":false,"disableDebit":false,"adjustToAddCharges":false,"verifyOnly":false,"voucher":false},"poyntRequestId":"14aa9011-8165-4f2b-a03a-b40ca4d4fc58"}
+
+***** GET SCAN *****
+
+ => POST /devices/cat/getScanData HTTP/1.1
+ => Poynt-Client: Java Sample
+ => Poynt-Request-Id: 444ad5a1-1841-4d09-a6be-ff7a0bce3240
+ => Signature: 42DE3051F33F54CA0E1431C35E611F10D57519C38ECE42394824E214FD991E0B
+ => Content-Type: text/plain; charset=utf-8
+ => Content-Length: 57
+ => Host: 127.0.0.1:55555
+ => Connection: Keep-Alive
+ => Accept-Encoding: gzip
+ => User-Agent: okhttp/3.5.0
+ => 
+ => {"poyntRequestId":"5c34fd43-32ba-46eb-86fc-5b1d37ba1ae1"}
+
+
+<=  HTTP/1.1 200 OK
+<=  Connection: Keep-Alive
+<=  Signature: 023A5FE5CCA445B5246E27D025F498AA6E4A006686B035DFE50DAA0C85657FB9
+<=  Content-Length: 105
+<=  Content-Type: application/json
+<=  
+<=  {"status":"SUCCESS", "poyntRequestId":"5c34fd43-32ba-46eb-86fc-5b1d37ba1ae1","scanResult":"036000291452"}
